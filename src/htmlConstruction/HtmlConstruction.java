@@ -9,8 +9,12 @@ package htmlConstruction;
  *
  * @author Bloque G
  */
+
+import htmlconstructor.HtmlConstructor;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
@@ -46,7 +50,7 @@ public class HtmlConstruction implements Runnable {
     /**
      * construct a document whit a personalizated title
      *
-     * @param title
+     * @param doctitle 
      */
     public void DocumentConstruction(String doctitle) {
 
@@ -109,15 +113,28 @@ public class HtmlConstruction implements Runnable {
         FileWriter documento = new FileWriter(this.docName, true);
         BufferedWriter escribir = new BufferedWriter(documento);
 
+        BufferedReader leer = new BufferedReader(new FileReader("complementoBt.txt"));
+        
         escribir.write("<head>");
         escribir.newLine();
 
-        escribir.write("<meta charset ='utf-8' / >");
+        escribir.write("<meta charset =\"UTF-8\" / >");
         escribir.newLine();
 
-        escribir.write("    <title>" + this.title + "</title>");
+        escribir.write("    <title>" + HtmlConstructor.user + "</title>");
         escribir.newLine();
-
+        
+        String t= leer.readLine();
+        
+        while(t!=null)
+        {
+        System.out.println(t);
+        escribir.write(t);
+        escribir.newLine();
+        t=leer.readLine();
+        }
+        
+        leer.close();
         escribir.close();
         documento.close();
     }

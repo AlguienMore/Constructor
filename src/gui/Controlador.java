@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -36,14 +37,14 @@ public class Controlador {
     private Button  login_button,
                     register_button;
     @FXML
-    private Circle circleImage;
+    private Rectangle circleImage;
     private Pane rootPane;
 
     GUILoader iLoader;
 
     @FXML
     public void initialize() {
-        Image im = new Image("http://via.placeholder.com/200x200", false);
+        Image im = new Image("/gui/assets/Logorick.png", false);
         circleImage.setFill(new ImagePattern(im));
         //rootPane.setEffect(new DropShadow(+25d, 0d, +2d, Color.CORAL));
 
